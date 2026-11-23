@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ONIRIKO — Tienda · Piezas renovadas</title>
+<meta name="description" content="Compra piezas únicas de ropa urbana reconstruida: camisas, chaquetas, pantalones y accesorios.">
+<link rel="icon" href="img/onrirko sant-02.png">
+<link rel="stylesheet" href="oniriko.css">
+<script src="oniriko.js" defer></script>
+</head>
+<body>
+
+<!-- ================= NAVEGACIÓN ================= -->
+<header class="nav">
+  <a class="logo" href="index.html" aria-label="ONIRIKO · ir al inicio">
+    <img src="img/onrirko sant-02.png" alt="">
+    ONIRIKO.
+  </a>
+  <nav class="navlinks" aria-label="Principal">
+    <a href="index.html">Inicio</a>
+    <a href="ropa.html" class="active">Ropa</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+  <div class="nav-actions">
+    <button class="icon-btn" id="favBtn" aria-label="Ver favoritos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg><span class="badge" id="favCount">0</span></button>
+    <button class="icon-btn" id="bagBtn" aria-label="Abrir bolsa de compras"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8h14l-1 13H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="badge" id="bagCount">0</span></button>
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Menú móvil">
+  <a href="index.html">Inicio</a>
+  <a href="ropa.html">Ropa</a>
+  <a href="nosotros.html">Nosotros</a>
+  <a href="contacto.html">Contacto</a>
+</nav>
+
+<main>
+
+  <section class="page-hero">
+    <div class="crumbs reveal"><span><a href="index.html">Inicio</a> / Tienda</span><span>Bogotá · Colombia / Colección renovada</span></div>
+    <div class="page-title-row">
+      <h1 class="split" style="--d:.2s">VISTE<br><em>otra historia.</em></h1>
+      <div class="reveal" style="--i:3">
+        <p>No hacemos prendas en serie. Transformamos lo que ya existe en piezas únicas que hablan de ti,
+          de la calle y de las historias que merecen continuar.</p>
+        <a href="#tienda" class="btn primary">Explorar colección ↘</a>
+      </div>
+    </div>
+    <div class="notes reveal" style="--i:4">
+      <span>01 — Piezas únicas</span><span>02 — Ropa reintervenida</span><span>03 — Ninguna es igual a otra</span>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>No es nuevo <i>✺</i> Es renovado <i>✺</i> Cada prenda tiene memoria <i>✺</i> Viste diferente <i>✺</i></span>
+      <span>No es nuevo <i>✺</i> Es renovado <i>✺</i> Cada prenda tiene memoria <i>✺</i> Viste diferente <i>✺</i></span>
+    </div>
+  </div>
+
+  <section id="tienda">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow rust reveal">01 / Catálogo</div>
+        <h2 class="section-title split">ENCUENTRA<br>TU PIEZA.</h2>
+      </div>
+      <p class="section-intro reveal">Prendas recuperadas, reconstruidas e intervenidas para crear una nueva forma
+        de vestir. Encuentra algo que no se repita.</p>
+    </div>
+
+    <div class="toolbar reveal">
+      <div class="filters" id="filters" role="group" aria-label="Filtrar por categoría">
+        <button class="filter active" data-filter="all" aria-pressed="true">Todo</button>
+        <button class="filter" data-filter="camisas" aria-pressed="false">Camisas</button>
+        <button class="filter" data-filter="chaquetas" aria-pressed="false">Chaquetas</button>
+        <button class="filter" data-filter="pantalones" aria-pressed="false">Pantalones</button>
+        <button class="filter" data-filter="accesorios" aria-pressed="false">Accesorios</button>
+        <button class="filter" data-filter="favoritos" aria-pressed="false">♥ Favoritos</button>
+      </div>
+      <div class="tools">
+        <label class="search">
+          <span class="sr-only">Buscar prenda</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+          <input type="search" id="search" placeholder="Buscar prenda…">
+        </label>
+        <label>
+          <span class="sr-only">Ordenar</span>
+          <select class="sort" id="sort">
+            <option value="default">Destacados</option>
+            <option value="low">Precio: menor a mayor</option>
+            <option value="high">Precio: mayor a menor</option>
+            <option value="name">Nombre A–Z</option>
+          </select>
+        </label>
+      </div>
+    </div>
+    <div class="results">
+      <span id="count">06 piezas</span>
+      <span>Colección / ONIRIKO</span>
+    </div>
+
+    <div class="products" id="products" aria-live="polite"></div>
+  </section>
+
+  <section class="dark-band">
+    <div class="eyebrow reveal">02 / Nuestra forma de vestir</div>
+    <h2 class="split">NO SIGAS PRODUCIENDO.<br><em>Reinterpreta.</em></h2>
+    <p class="reveal">Elegir una prenda renovada es reconocer que los materiales tienen más de una vida.
+      En ONIRIKO, las marcas, las costuras y las diferencias forman parte de la identidad.</p>
+    <p class="reveal" style="margin-top:30px"><a href="nosotros.html" class="btn light">Conoce nuestra historia ↗</a></p>
+  </section>
+
+  <section class="contact">
+    <div>
+      <div class="eyebrow reveal">03 / ¿Te interesa una pieza?</div>
+      <h2 class="split">HAZLA<br>TUYA.</h2>
+    </div>
+    <div class="reveal">
+      <p>¿Encontraste algo para ti? Escríbenos para consultar disponibilidad, tallas y detalles de la prenda.</p>
+      <a href="contacto.html" class="btn" style="background:var(--paper);color:var(--ink);border-color:var(--paper)">Hablemos ↗</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div>
+    <a class="logo" href="index.html">ONIRIKO.</a>
+    <p style="color:var(--muted);max-width:320px;line-height:1.6;font-size:14px">Ropa urbana · piezas únicas · memoria. Hecho en Bogotá, Colombia.</p>
+  </div>
+  <div>
+    <h4>Tienda</h4>
+    <ul>
+      <li><a href="ropa.html?cat=camisas#tienda">Camisas</a></li>
+      <li><a href="ropa.html?cat=chaquetas#tienda">Chaquetas</a></li>
+      <li><a href="ropa.html?cat=pantalones#tienda">Pantalones</a></li>
+      <li><a href="ropa.html?cat=accesorios#tienda">Accesorios</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>ONIRIKO</h4>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="nosotros.html">Sobre nosotros</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 ONIRIKO. / Bogotá, Colombia</span>
+    <span>Moda urbana · creatividad · reutilización</span>
+  </div>
+</footer>
+</body>
+</html>

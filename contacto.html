@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto | ONIRIKO</title>
+<meta name="description" content="Escríbele a ONIRIKO: consultas de prendas, pedidos y colaboraciones.">
+<link rel="icon" href="img/onrirko sant-02.png">
+<link rel="stylesheet" href="oniriko.css">
+<script src="oniriko.js" defer></script>
+</head>
+<body>
+
+<!-- ================= NAVEGACIÓN ================= -->
+<header class="nav">
+  <a class="logo" href="index.html" aria-label="ONIRIKO · ir al inicio">
+    <img src="img/onrirko sant-02.png" alt="">
+    ONIRIKO.
+  </a>
+  <nav class="navlinks" aria-label="Principal">
+    <a href="index.html">Inicio</a>
+    <a href="ropa.html">Ropa</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="contacto.html" class="active">Contacto</a>
+  </nav>
+  <div class="nav-actions">
+    <button class="icon-btn" id="favBtn" aria-label="Ver favoritos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg><span class="badge" id="favCount">0</span></button>
+    <button class="icon-btn" id="bagBtn" aria-label="Abrir bolsa de compras"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8h14l-1 13H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="badge" id="bagCount">0</span></button>
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Menú móvil">
+  <a href="index.html">Inicio</a>
+  <a href="ropa.html">Ropa</a>
+  <a href="nosotros.html">Nosotros</a>
+  <a href="contacto.html">Contacto</a>
+</nav>
+
+<main>
+
+  <section class="page-hero">
+    <div class="crumbs reveal"><span><a href="index.html">Inicio</a> / Contacto</span><span>ONIRIKO / Hablemos</span></div>
+    <div class="page-title-row">
+      <h1 class="split" style="--d:.2s">HAGAMOS<br><span class="rust">CONTACTO.</span></h1>
+      <p class="reveal" style="--i:3">¿Tienes una pregunta, un pedido o una idea para compartir?
+        Completa el formulario y cuéntanos qué tienes en mente.</p>
+    </div>
+  </section>
+
+  <section id="formulario">
+    <div class="contact-page">
+      <aside>
+        <div class="eyebrow rust reveal">Estamos para escucharte</div>
+        <h2 class="split">TU IDEA<br>TAMBIÉN<br>HACE PARTE.</h2>
+        <p class="reveal">En ONIRIKO creemos en las ideas que transforman. Escríbenos para resolver tus dudas,
+          cerrar tu pedido o explorar nuevas posibilidades juntos.</p>
+        <div class="contact-photo reveal"><img src="img/WhatsApp Image 2026-10-21 at 7.12.31 PM.jpeg" alt="Tarjetas de presentación de ONIRIKO" loading="lazy"></div>
+        <ul class="info-list reveal">
+          <li><span>Ciudad</span><span>Bogotá, Colombia</span></li>
+          <li><span>Envíos</span><span>Toda Colombia</span></li>
+          <li><span>Respuesta</span><span>24 – 48 horas</span></li>
+        </ul>
+      </aside>
+
+      <form class="form" id="fullForm">
+        <input type="hidden" name="_subject" value="Nuevo mensaje desde la web de ONIRIKO">
+        <input type="hidden" name="_template" value="table">
+        <div class="field-row">
+          <div class="field reveal">
+            <label for="nombre">Nombre completo *</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" autocomplete="name" required>
+          </div>
+          <div class="field reveal">
+            <label for="correo">Correo electrónico *</label>
+            <input type="email" id="correo" name="correo" placeholder="tucorreo@ejemplo.com" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="field reveal">
+          <label for="asunto">Asunto *</label>
+          <select id="asunto" name="asunto" required>
+            <option value="" disabled selected>Selecciona un asunto</option>
+            <option value="Pedido">Pedido de piezas</option>
+            <option value="Consulta sobre prendas">Consulta sobre prendas</option>
+            <option value="Colaboraciones">Colaboraciones</option>
+            <option value="Sostenibilidad">Sostenibilidad</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        <div class="field reveal">
+          <label for="mensaje">Tu mensaje *</label>
+          <textarea id="mensaje" name="mensaje" rows="6" placeholder="Cuéntanos qué tienes en mente…" required></textarea>
+        </div>
+        <label class="check reveal">
+          <input type="checkbox" name="acepta_contacto" value="Sí" required>
+          <span>Acepto que ONIRIKO utilice estos datos para responder a mi solicitud.</span>
+        </label>
+        <button type="submit" class="btn primary reveal">Enviar mensaje ↗</button>
+        <small class="reveal">* Campos obligatorios.</small>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div>
+    <a class="logo" href="index.html">ONIRIKO.</a>
+    <p style="color:var(--muted);max-width:320px;line-height:1.6;font-size:14px">Ropa urbana · piezas únicas · memoria. Hecho en Bogotá, Colombia.</p>
+  </div>
+  <div>
+    <h4>Tienda</h4>
+    <ul>
+      <li><a href="ropa.html?cat=camisas#tienda">Camisas</a></li>
+      <li><a href="ropa.html?cat=chaquetas#tienda">Chaquetas</a></li>
+      <li><a href="ropa.html?cat=pantalones#tienda">Pantalones</a></li>
+      <li><a href="ropa.html?cat=accesorios#tienda">Accesorios</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>ONIRIKO</h4>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="nosotros.html">Sobre nosotros</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 ONIRIKO. / Bogotá, Colombia</span>
+    <span>Moda urbana · creatividad · reutilización</span>
+  </div>
+</footer>
+</body>
+</html>
