@@ -1,0 +1,311 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Anfetozis Punk</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: one fixed 1920×1080 stage, scaled to fit; every layer sits where it sat in the Illustrator file */
+:root{
+  --void:#0b0612;
+  --purple:#a838ff;
+  --toxic:#33ea1f;
+  --ink:#2a0b45;
+  --blood:#f0524f;
+  --bone:#f2ece2;
+  color-scheme:dark;
+}
+html,body{height:100%}
+body{margin:0;background:var(--void);color:var(--bone);overflow:hidden;
+  padding-left:max(0px,env(safe-area-inset-left,0px));padding-right:max(0px,env(safe-area-inset-right,0px))}
+#vp{position:fixed;inset:0;display:grid;place-items:center;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:0 0;overflow:hidden;background:var(--purple)}
+#shake{position:absolute;inset:0}
+.page{position:absolute;inset:0}
+.page[aria-hidden="true"]{pointer-events:none}
+.L{position:absolute;display:block;max-width:none;user-select:none;-webkit-user-drag:none;pointer-events:none;will-change:transform}
+#logo{position:absolute;inset:0;pointer-events:none}
+#logoHit{position:absolute;left:390px;top:80px;width:1150px;height:870px;border-radius:40%;cursor:pointer;pointer-events:auto;background:transparent;border:0;padding:0}
+#logoHit:focus-visible{outline:4px dashed var(--toxic);outline-offset:6px}
+#bus{position:absolute;z-index:50;pointer-events:none}
+#bus img{display:block;width:100%;height:100%}
+.link{position:absolute;display:block;pointer-events:auto;cursor:pointer}
+.link:focus-visible{outline:3px dashed var(--toxic)}
+#back{position:absolute;left:24px;top:1000px;width:56px;height:56px;border:4px solid var(--ink);background:var(--purple);
+  clip-path:polygon(6% 12%,96% 0,88% 90%,0 100%);cursor:pointer;z-index:60;display:grid;place-items:center;transform:rotate(-6deg)}
+#back svg{width:28px;height:28px}
+#back:focus-visible{outline:4px dashed var(--bone)}
+#flash{position:absolute;inset:0;z-index:80;pointer-events:none;opacity:0}
+#bands{position:absolute;inset:0;z-index:79;pointer-events:none}
+#bands i{position:absolute;left:0;width:100%;transform:scaleX(0);transform-origin:left}
+#grain{position:absolute;inset:-50%;z-index:70;pointer-events:none;opacity:.13;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation:grain .5s steps(4) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}100%{transform:translate(1%,3%)}}
+svg.strings{position:absolute;inset:0;width:1920px;height:1080px;pointer-events:none;z-index:5}
+svg.strings line{stroke:var(--bone);stroke-width:2;opacity:.55}
+@media (prefers-reduced-motion:reduce){#grain{animation:none}}
+</style>
+
+<div id="vp"><div id="stage"><div id="shake">
+  <section class="page" id="p1" aria-label="Anfetozis, página 1"></section>
+  <section class="page" id="p2" aria-label="Anfetozis, página 2" aria-hidden="true" hidden></section>
+  <div id="bus"><img id="busImg" alt="TransMilenio"></div>
+  <div id="bands"></div>
+  <div id="flash"></div>
+  <div id="grain"></div>
+</div></div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/EasePack.min.js"></script>
+<script>
+const MAN=[{"id":"p1_bg","page":0,"src":"a/p1_bg.webp","x":0.0,"y":0.0,"w":1920.0,"h":1080.0},{"id":"p1_news","page":0,"src":"a/p1_news.webp","x":21.0,"y":0.0,"w":1887.0,"h":1080.0},{"id":"p1_bld","page":0,"src":"a/p1_bld.webp","x":48.0,"y":17.0,"w":1824.0,"h":1046.0},{"id":"p1_splTL","page":0,"src":"a/p1_splTL.webp","x":0.0,"y":150.0,"w":250.0,"h":400.0},{"id":"p1_splB","page":0,"src":"a/p1_splB.webp","x":542.0,"y":740.0,"w":1301.0,"h":340.0},{"id":"p1_fig","page":0,"src":"a/p1_fig.webp","x":1549.0,"y":0.0,"w":371.0,"h":354.0},{"id":"p1_cross","page":0,"src":"a/p1_cross.webp","x":779.33,"y":262.67,"w":636.0,"h":676.67},{"id":"p1_mouth","page":0,"src":"a/p1_mouth.webp","x":495.33,"y":164.67,"w":1002.67,"h":836.67},{"id":"p1_L0","page":0,"src":"a/p1_L0.webp","x":396.67,"y":212.67,"w":268.0,"h":388.0},{"id":"p1_L1","page":0,"src":"a/p1_L1.webp","x":520.0,"y":267.33,"w":212.67,"h":261.33},{"id":"p1_L2","page":0,"src":"a/p1_L2.webp","x":606.67,"y":206.67,"w":262.67,"h":308.67},{"id":"p1_L3","page":0,"src":"a/p1_L3.webp","x":752.0,"y":143.33,"w":201.33,"h":279.33},{"id":"p1_L4","page":0,"src":"a/p1_L4.webp","x":768.67,"y":78.67,"w":375.33,"h":334.67},{"id":"p1_L5","page":0,"src":"a/p1_L5.webp","x":971.33,"y":223.33,"w":176.0,"h":259.33},{"id":"p1_L6","page":0,"src":"a/p1_L6.webp","x":1035.33,"y":250.67,"w":315.33,"h":280.0},{"id":"p1_L7","page":0,"src":"a/p1_L7.webp","x":1262.0,"y":380.0,"w":261.33,"h":264.0},{"id":"p1_bus","page":0,"src":"a/p1_bus.webp","x":215.0,"y":1010.0,"w":173.5,"h":66.5},{"id":"p1_tTL_0","page":0,"src":"a/p1_tTL_0.webp","x":44.0,"y":82.4,"w":537.2,"h":16.8},{"id":"p1_tTL_1","page":0,"src":"a/p1_tTL_1.webp","x":44.0,"y":100.0,"w":390.0,"h":15.6},{"id":"p1_tTL_2","page":0,"src":"a/p1_tTL_2.webp","x":44.0,"y":116.0,"w":449.2,"h":16.4},{"id":"p1_tTL_3","page":0,"src":"a/p1_tTL_3.webp","x":44.0,"y":133.2,"w":218.8,"h":16.4},{"id":"p1_tTR_0","page":0,"src":"a/p1_tTR_0.webp","x":1194.0,"y":164.0,"w":278.4,"h":16.0},{"id":"p1_tTR_1","page":0,"src":"a/p1_tTR_1.webp","x":1195.2,"y":180.8,"w":278.0,"h":15.6},{"id":"p1_tTR_2","page":0,"src":"a/p1_tTR_2.webp","x":1194.8,"y":197.6,"w":278.4,"h":16.0},{"id":"p1_tTR_3","page":0,"src":"a/p1_tTR_3.webp","x":1194.8,"y":214.4,"w":38.0,"h":12.4},{"id":"p1_tR_0","page":0,"src":"a/p1_tR_0.webp","x":1736.0,"y":390.0,"w":170.0,"h":12.4},{"id":"p1_tR_1","page":0,"src":"a/p1_tR_1.webp","x":1735.6,"y":406.8,"w":169.6,"h":16.0},{"id":"p1_tR_2","page":0,"src":"a/p1_tR_2.webp","x":1736.0,"y":423.6,"w":169.6,"h":15.6},{"id":"p1_tR_3","page":0,"src":"a/p1_tR_3.webp","x":1736.0,"y":441.2,"w":104.8,"h":15.2},{"id":"p1_tR_4","page":0,"src":"a/p1_tR_4.webp","x":1740.8,"y":457.2,"w":164.8,"h":15.6},{"id":"p1_tR_5","page":0,"src":"a/p1_tR_5.webp","x":1736.0,"y":474.0,"w":169.6,"h":15.6},{"id":"p1_tR_6","page":0,"src":"a/p1_tR_6.webp","x":1736.0,"y":491.6,"w":56.8,"h":11.6},{"id":"p1_tCry_0","page":0,"src":"a/p1_tCry_0.webp","x":1640.8,"y":674.0,"w":58.4,"h":12.4},{"id":"p1_tCry_1","page":0,"src":"a/p1_tCry_1.webp","x":1630.0,"y":690.8,"w":69.2,"h":12.4},{"id":"p1_tCry_2","page":0,"src":"a/p1_tCry_2.webp","x":1654.4,"y":707.6,"w":44.8,"h":16.0},{"id":"p1_tCry_3","page":0,"src":"a/p1_tCry_3.webp","x":1627.6,"y":724.4,"w":71.6,"h":16.0},{"id":"p1_tCry_4","page":0,"src":"a/p1_tCry_4.webp","x":1536.8,"y":741.2,"w":162.4,"h":12.4},{"id":"p1_tL_0","page":0,"src":"a/p1_tL_0.webp","x":56.4,"y":536.8,"w":161.6,"h":15.6},{"id":"p1_tL_1","page":0,"src":"a/p1_tL_1.webp","x":56.8,"y":553.6,"w":161.2,"h":15.6},{"id":"p1_tL_2","page":0,"src":"a/p1_tL_2.webp","x":56.4,"y":570.4,"w":162.4,"h":12.4},{"id":"p1_tL_3","page":0,"src":"a/p1_tL_3.webp","x":56.4,"y":587.2,"w":162.0,"h":15.6},{"id":"p1_tL_4","page":0,"src":"a/p1_tL_4.webp","x":56.4,"y":604.0,"w":162.4,"h":15.6},{"id":"p1_tL_5","page":0,"src":"a/p1_tL_5.webp","x":56.4,"y":620.8,"w":162.4,"h":12.4},{"id":"p1_tL_6","page":0,"src":"a/p1_tL_6.webp","x":56.4,"y":637.6,"w":162.0,"h":16.0},{"id":"p1_tL_7","page":0,"src":"a/p1_tL_7.webp","x":56.4,"y":654.4,"w":162.4,"h":15.6},{"id":"p1_tL_8","page":0,"src":"a/p1_tL_8.webp","x":56.4,"y":671.2,"w":162.0,"h":16.0},{"id":"p1_tL_9","page":0,"src":"a/p1_tL_9.webp","x":56.4,"y":688.0,"w":161.6,"h":15.6},{"id":"p1_tL_10","page":0,"src":"a/p1_tL_10.webp","x":56.4,"y":704.8,"w":161.6,"h":15.6},{"id":"p1_tL_11","page":0,"src":"a/p1_tL_11.webp","x":56.4,"y":721.6,"w":162.0,"h":16.0},{"id":"p1_tL_12","page":0,"src":"a/p1_tL_12.webp","x":56.4,"y":738.4,"w":162.4,"h":16.0},{"id":"p1_tL_13","page":0,"src":"a/p1_tL_13.webp","x":56.4,"y":755.2,"w":162.0,"h":16.0},{"id":"p1_tL_14","page":0,"src":"a/p1_tL_14.webp","x":56.4,"y":772.0,"w":162.4,"h":12.4},{"id":"p1_tL_15","page":0,"src":"a/p1_tL_15.webp","x":56.4,"y":788.8,"w":162.0,"h":15.6},{"id":"p1_tL_16","page":0,"src":"a/p1_tL_16.webp","x":56.4,"y":805.6,"w":161.6,"h":16.0},{"id":"p1_tL_17","page":0,"src":"a/p1_tL_17.webp","x":56.4,"y":822.4,"w":101.2,"h":12.4},{"id":"p1_tL_18","page":0,"src":"a/p1_tL_18.webp","x":56.8,"y":856.0,"w":162.0,"h":14.0},{"id":"p1_tL_19","page":0,"src":"a/p1_tL_19.webp","x":56.4,"y":872.8,"w":161.6,"h":15.6},{"id":"p1_tL_20","page":0,"src":"a/p1_tL_20.webp","x":56.4,"y":889.6,"w":161.6,"h":15.6},{"id":"p1_tL_21","page":0,"src":"a/p1_tL_21.webp","x":56.4,"y":906.4,"w":161.6,"h":12.4},{"id":"p1_tL_22","page":0,"src":"a/p1_tL_22.webp","x":56.4,"y":923.2,"w":161.6,"h":15.6},{"id":"p1_tL_23","page":0,"src":"a/p1_tL_23.webp","x":56.8,"y":940.0,"w":161.6,"h":15.6},{"id":"p1_tL_24","page":0,"src":"a/p1_tL_24.webp","x":56.4,"y":956.8,"w":162.8,"h":16.0},{"id":"p1_tL_25","page":0,"src":"a/p1_tL_25.webp","x":56.8,"y":974.0,"w":161.6,"h":12.0},{"id":"p1_tL_26","page":0,"src":"a/p1_tL_26.webp","x":56.4,"y":990.4,"w":162.0,"h":15.6},{"id":"p1_tL_27","page":0,"src":"a/p1_tL_27.webp","x":56.8,"y":1007.2,"w":60.0,"h":12.4},{"id":"p1_tL_28","page":0,"src":"a/p1_tL_28.webp","x":56.8,"y":1024.0,"w":155.2,"h":12.4},{"id":"p1_tUrl_0","page":0,"src":"a/p1_tUrl_0.webp","x":395.6,"y":698.8,"w":204.0,"h":29.6},{"id":"p2_bg","page":1,"src":"a/p2_bg.webp","x":0.0,"y":0.0,"w":1920.0,"h":1080.0},{"id":"p2_crowd","page":1,"src":"a/p2_crowd.webp","x":4.0,"y":86.0,"w":1916.0,"h":994.0},{"id":"p2_news","page":1,"src":"a/p2_news.webp","x":168.0,"y":284.0,"w":1622.0,"h":796.0},{"id":"p2_pup0","page":1,"src":"a/p2_pup0.webp","x":254.0,"y":432.67,"w":577.33,"h":620.67},{"id":"p2_pup1","page":1,"src":"a/p2_pup1.webp","x":664.67,"y":422.67,"w":574.0,"h":630.0},{"id":"p2_pup2","page":1,"src":"a/p2_pup2.webp","x":1226.67,"y":410.67,"w":478.0,"h":659.33},{"id":"p2_bus","page":1,"src":"a/p2_bus.webp","x":1633.0,"y":1007.0,"w":173.5,"h":66.5},{"id":"p2_n2a_0","page":1,"src":"a/p2_n2a_0.webp","x":1272.33,"y":206.67,"w":15.0,"h":22.33},{"id":"p2_n2a_1","page":1,"src":"a/p2_n2a_1.webp","x":1288.33,"y":204.33,"w":20.67,"h":23.33},{"id":"p2_n2a_2","page":1,"src":"a/p2_n2a_2.webp","x":1308.0,"y":201.67,"w":27.0,"h":22.67},{"id":"p2_n2a_3","page":1,"src":"a/p2_n2a_3.webp","x":1332.67,"y":200.33,"w":19.67,"h":22.0},{"id":"p2_n2a_4","page":1,"src":"a/p2_n2a_4.webp","x":1351.0,"y":200.0,"w":19.33,"h":21.33},{"id":"p2_n2a_5","page":1,"src":"a/p2_n2a_5.webp","x":1369.33,"y":200.0,"w":23.0,"h":21.67},{"id":"p2_n2a_6","page":1,"src":"a/p2_n2a_6.webp","x":1399.67,"y":202.0,"w":19.67,"h":21.0},{"id":"p2_n2a_7","page":1,"src":"a/p2_n2a_7.webp","x":1417.33,"y":202.67,"w":8.33,"h":21.67},{"id":"p2_n2a_8","page":1,"src":"a/p2_n2a_8.webp","x":1425.67,"y":204.0,"w":19.67,"h":21.67},{"id":"p2_n2a_9","page":1,"src":"a/p2_n2a_9.webp","x":1441.67,"y":206.67,"w":21.33,"h":22.0},{"id":"p2_n2a_10","page":1,"src":"a/p2_n2a_10.webp","x":1461.33,"y":211.33,"w":21.0,"h":20.67},{"id":"p2_n2a_11","page":1,"src":"a/p2_n2a_11.webp","x":1478.33,"y":212.67,"w":22.33,"h":21.67},{"id":"p2_n2a_12","page":1,"src":"a/p2_n2a_12.webp","x":1499.33,"y":219.0,"w":18.0,"h":21.0},{"id":"p2_n2a_13","page":1,"src":"a/p2_n2a_13.webp","x":1523.67,"y":226.0,"w":21.0,"h":22.33},{"id":"p2_n2a_14","page":1,"src":"a/p2_n2a_14.webp","x":1537.67,"y":231.67,"w":23.0,"h":23.67},{"id":"p2_n2a_15","page":1,"src":"a/p2_n2a_15.webp","x":1556.33,"y":240.0,"w":23.33,"h":21.33},{"id":"p2_n2a_16","page":1,"src":"a/p2_n2a_16.webp","x":1572.0,"y":245.33,"w":28.0,"h":27.33},{"id":"p2_n2a_17","page":1,"src":"a/p2_n2a_17.webp","x":1598.0,"y":257.67,"w":19.0,"h":20.33},{"id":"p2_n2a_18","page":1,"src":"a/p2_n2a_18.webp","x":1612.0,"y":262.67,"w":26.0,"h":25.33},{"id":"p2_n2a_19","page":1,"src":"a/p2_n2a_19.webp","x":1628.33,"y":275.33,"w":24.67,"h":24.67},{"id":"p2_n2a_20","page":1,"src":"a/p2_n2a_20.webp","x":1651.67,"y":290.67,"w":25.0,"h":24.67},{"id":"p2_n2a_21","page":1,"src":"a/p2_n2a_21.webp","x":1667.67,"y":301.33,"w":29.67,"h":29.33},{"id":"p2_n2a_22","page":1,"src":"a/p2_n2a_22.webp","x":1688.33,"y":318.33,"w":25.67,"h":24.33},{"id":"p2_n2a_23","page":1,"src":"a/p2_n2a_23.webp","x":1709.0,"y":330.33,"w":21.33,"h":20.67},{"id":"p2_n2a_24","page":1,"src":"a/p2_n2a_24.webp","x":1718.0,"y":344.67,"w":26.33,"h":24.33},{"id":"p2_n2a_25","page":1,"src":"a/p2_n2a_25.webp","x":1735.0,"y":361.67,"w":11.67,"h":11.67},{"id":"p2_n2b_0","page":1,"src":"a/p2_n2b_0.webp","x":1399.33,"y":234.67,"w":19.33,"h":21.33},{"id":"p2_n2b_1","page":1,"src":"a/p2_n2b_1.webp","x":1417.0,"y":237.33,"w":19.67,"h":21.67},{"id":"p2_n2b_2","page":1,"src":"a/p2_n2b_2.webp","x":1435.67,"y":239.0,"w":16.67,"h":21.67},{"id":"p2_n2b_3","page":1,"src":"a/p2_n2b_3.webp","x":1449.33,"y":242.0,"w":17.0,"h":21.0},{"id":"p2_n2b_4","page":1,"src":"a/p2_n2b_4.webp","x":1471.33,"y":245.33,"w":21.33,"h":24.33},{"id":"p2_n2b_5","page":1,"src":"a/p2_n2b_5.webp","x":1487.0,"y":249.33,"w":17.67,"h":23.67},{"id":"p2_n2b_6","page":1,"src":"a/p2_n2b_6.webp","x":1502.33,"y":250.0,"w":22.67,"h":28.33},{"id":"p2_n2b_7","page":1,"src":"a/p2_n2b_7.webp","x":1520.0,"y":260.33,"w":20.33,"h":22.0},{"id":"p2_n2b_8","page":1,"src":"a/p2_n2b_8.webp","x":1538.33,"y":265.67,"w":17.67,"h":21.33},{"id":"p2_n2b_9","page":1,"src":"a/p2_n2b_9.webp","x":1549.33,"y":273.67,"w":22.33,"h":21.0},{"id":"p2_n2b_10","page":1,"src":"a/p2_n2b_10.webp","x":1564.67,"y":277.33,"w":12.67,"h":21.33},{"id":"p2_n2b_11","page":1,"src":"a/p2_n2b_11.webp","x":1573.0,"y":282.0,"w":21.0,"h":22.33},{"id":"p2_n2b_12","page":1,"src":"a/p2_n2b_12.webp","x":1587.67,"y":290.0,"w":18.0,"h":20.33},{"id":"p2_n2b_13","page":1,"src":"a/p2_n2b_13.webp","x":1611.33,"y":301.33,"w":19.33,"h":20.67},{"id":"p2_n2c_0","page":1,"src":"a/p2_n2c_0.webp","x":1471.33,"y":279.0,"w":19.0,"h":23.0},{"id":"p2_n2c_1","page":1,"src":"a/p2_n2c_1.webp","x":1486.33,"y":285.33,"w":16.33,"h":21.0},{"id":"p2_n2c_2","page":1,"src":"a/p2_n2c_2.webp","x":1500.33,"y":289.33,"w":19.33,"h":22.0},{"id":"p2_n2c_3","page":1,"src":"a/p2_n2c_3.webp","x":1512.33,"y":292.0,"w":22.33,"h":25.33},{"id":"p2_n2c_4","page":1,"src":"a/p2_n2c_4.webp","x":1527.33,"y":300.33,"w":20.33,"h":19.33},{"id":"p2_n2c_5","page":1,"src":"a/p2_n2c_5.webp","x":1542.0,"y":319.0,"w":5.0,"h":5.0},{"id":"p2_n1a_0","page":1,"src":"a/p2_n1a_0.webp","x":748.33,"y":369.33,"w":21.33,"h":21.0},{"id":"p2_n1a_1","page":1,"src":"a/p2_n1a_1.webp","x":760.67,"y":361.33,"w":17.67,"h":15.0},{"id":"p2_n1a_2","page":1,"src":"a/p2_n1a_2.webp","x":764.33,"y":347.67,"w":24.67,"h":24.67},{"id":"p2_n1a_3","page":1,"src":"a/p2_n1a_3.webp","x":779.33,"y":337.33,"w":18.67,"h":20.67},{"id":"p2_n1a_4","page":1,"src":"a/p2_n1a_4.webp","x":792.67,"y":327.67,"w":17.0,"h":18.33},{"id":"p2_n1a_5","page":1,"src":"a/p2_n1a_5.webp","x":809.33,"y":310.67,"w":21.67,"h":23.67},{"id":"p2_n1a_6","page":1,"src":"a/p2_n1a_6.webp","x":819.33,"y":308.33,"w":22.0,"h":15.33},{"id":"p2_n1a_7","page":1,"src":"a/p2_n1a_7.webp","x":831.67,"y":290.0,"w":24.0,"h":24.33},{"id":"p2_n1a_8","page":1,"src":"a/p2_n1a_8.webp","x":848.33,"y":282.33,"w":14.67,"h":20.67},{"id":"p2_n1a_9","page":1,"src":"a/p2_n1a_9.webp","x":859.0,"y":275.0,"w":21.33,"h":23.33},{"id":"p2_n1a_10","page":1,"src":"a/p2_n1a_10.webp","x":871.67,"y":265.0,"w":22.0,"h":23.0},{"id":"p2_n1a_11","page":1,"src":"a/p2_n1a_11.webp","x":888.0,"y":259.67,"w":21.67,"h":19.67},{"id":"p2_n1a_12","page":1,"src":"a/p2_n1a_12.webp","x":906.67,"y":249.0,"w":18.33,"h":22.33},{"id":"p2_n1a_13","page":1,"src":"a/p2_n1a_13.webp","x":921.33,"y":243.67,"w":16.0,"h":19.0},{"id":"p2_n1a_14","page":1,"src":"a/p2_n1a_14.webp","x":940.0,"y":234.67,"w":15.67,"h":19.33},{"id":"p2_n1a_15","page":1,"src":"a/p2_n1a_15.webp","x":957.0,"y":228.0,"w":17.67,"h":22.0},{"id":"p2_n1a_16","page":1,"src":"a/p2_n1a_16.webp","x":970.67,"y":226.33,"w":11.33,"h":17.33},{"id":"p2_n1a_17","page":1,"src":"a/p2_n1a_17.webp","x":978.33,"y":221.0,"w":19.67,"h":22.33},{"id":"p2_n1a_18","page":1,"src":"a/p2_n1a_18.webp","x":993.33,"y":216.33,"w":19.67,"h":21.0},{"id":"p2_n1a_19","page":1,"src":"a/p2_n1a_19.webp","x":1013.0,"y":212.0,"w":19.0,"h":22.0},{"id":"p2_n1a_20","page":1,"src":"a/p2_n1a_20.webp","x":1037.0,"y":207.67,"w":17.0,"h":20.67},{"id":"p2_n1a_21","page":1,"src":"a/p2_n1a_21.webp","x":1052.67,"y":205.67,"w":15.67,"h":19.33},{"id":"p2_n1a_22","page":1,"src":"a/p2_n1a_22.webp","x":1067.0,"y":204.67,"w":19.33,"h":19.0},{"id":"p2_n1a_23","page":1,"src":"a/p2_n1a_23.webp","x":1085.67,"y":202.0,"w":16.67,"h":20.0},{"id":"p2_n1a_24","page":1,"src":"a/p2_n1a_24.webp","x":1101.67,"y":195.67,"w":8.0,"h":25.0},{"id":"p2_n1a_25","page":1,"src":"a/p2_n1a_25.webp","x":1108.33,"y":201.0,"w":18.67,"h":19.33},{"id":"p2_n1a_26","page":1,"src":"a/p2_n1a_26.webp","x":1126.0,"y":201.33,"w":20.67,"h":19.0},{"id":"p2_n1a_27","page":1,"src":"a/p2_n1a_27.webp","x":1145.33,"y":201.33,"w":17.67,"h":20.0},{"id":"p2_n1a_28","page":1,"src":"a/p2_n1a_28.webp","x":1161.67,"y":202.67,"w":18.67,"h":19.0},{"id":"p2_n1b_0","page":1,"src":"a/p2_n1b_0.webp","x":907.33,"y":281.67,"w":21.0,"h":21.67},{"id":"p2_n1b_1","page":1,"src":"a/p2_n1b_1.webp","x":924.67,"y":273.67,"w":20.0,"h":22.67},{"id":"p2_n1b_2","page":1,"src":"a/p2_n1b_2.webp","x":938.0,"y":268.0,"w":14.67,"h":19.33},{"id":"p2_n1b_3","page":1,"src":"a/p2_n1b_3.webp","x":950.67,"y":260.67,"w":21.0,"h":23.0},{"id":"p2_n1b_4","page":1,"src":"a/p2_n1b_4.webp","x":967.33,"y":256.33,"w":17.0,"h":21.67},{"id":"p2_n1b_5","page":1,"src":"a/p2_n1b_5.webp","x":980.0,"y":248.0,"w":11.33,"h":24.33},{"id":"p2_n1b_6","page":1,"src":"a/p2_n1b_6.webp","x":987.67,"y":249.67,"w":18.67,"h":22.0},{"id":"p2_n1c_0","page":1,"src":"a/p2_n1c_0.webp","x":932.0,"y":300.67,"w":17.67,"h":21.33},{"id":"p2_n1c_1","page":1,"src":"a/p2_n1c_1.webp","x":950.33,"y":297.0,"w":14.67,"h":18.67},{"id":"p2_n1c_2","page":1,"src":"a/p2_n1c_2.webp","x":961.33,"y":291.0,"w":17.33,"h":20.0},{"id":"p2_n1c_3","page":1,"src":"a/p2_n1c_3.webp","x":972.0,"y":285.33,"w":19.67,"h":22.33},{"id":"p2_n1c_4","page":1,"src":"a/p2_n1c_4.webp","x":987.67,"y":281.67,"w":13.67,"h":21.33},{"id":"p2_n0a_0","page":1,"src":"a/p2_n0a_0.webp","x":136.0,"y":509.33,"w":25.33,"h":19.33},{"id":"p2_n0a_1","page":1,"src":"a/p2_n0a_1.webp","x":143.0,"y":483.33,"w":25.33,"h":26.67},{"id":"p2_n0a_2","page":1,"src":"a/p2_n0a_2.webp","x":152.0,"y":476.67,"w":22.33,"h":13.33},{"id":"p2_n0a_3","page":1,"src":"a/p2_n0a_3.webp","x":157.67,"y":459.0,"w":20.33,"h":23.33},{"id":"p2_n0a_4","page":1,"src":"a/p2_n0a_4.webp","x":169.33,"y":435.67,"w":25.0,"h":24.67},{"id":"p2_n0a_5","page":1,"src":"a/p2_n0a_5.webp","x":176.0,"y":424.67,"w":26.0,"h":18.33},{"id":"p2_n0a_6","page":1,"src":"a/p2_n0a_6.webp","x":185.33,"y":400.67,"w":28.0,"h":27.0},{"id":"p2_n0a_7","page":1,"src":"a/p2_n0a_7.webp","x":198.0,"y":387.67,"w":20.33,"h":22.33},{"id":"p2_n0a_8","page":1,"src":"a/p2_n0a_8.webp","x":207.67,"y":374.33,"w":25.0,"h":26.0},{"id":"p2_n0a_9","page":1,"src":"a/p2_n0a_9.webp","x":217.0,"y":355.33,"w":26.33,"h":27.33},{"id":"p2_n0a_10","page":1,"src":"a/p2_n0a_10.webp","x":231.0,"y":343.0,"w":24.33,"h":24.0},{"id":"p2_n0a_11","page":1,"src":"a/p2_n0a_11.webp","x":248.67,"y":325.33,"w":22.33,"h":25.67},{"id":"p2_n0a_12","page":1,"src":"a/p2_n0a_12.webp","x":261.67,"y":314.67,"w":19.33,"h":20.67},{"id":"p2_n0a_13","page":1,"src":"a/p2_n0a_13.webp","x":279.0,"y":293.67,"w":23.33,"h":24.0},{"id":"p2_n0a_14","page":1,"src":"a/p2_n0a_14.webp","x":293.0,"y":282.33,"w":25.0,"h":26.67},{"id":"p2_n0a_15","page":1,"src":"a/p2_n0a_15.webp","x":309.33,"y":269.67,"w":22.0,"h":25.67},{"id":"p2_n0a_16","page":1,"src":"a/p2_n0a_16.webp","x":323.67,"y":255.33,"w":30.0,"h":29.67},{"id":"p2_n0a_17","page":1,"src":"a/p2_n0a_17.webp","x":346.33,"y":245.33,"w":19.0,"h":21.33},{"id":"p2_n0a_18","page":1,"src":"a/p2_n0a_18.webp","x":358.0,"y":232.33,"w":25.33,"h":26.67},{"id":"p2_n0a_19","page":1,"src":"a/p2_n0a_19.webp","x":379.33,"y":222.67,"w":24.33,"h":27.0},{"id":"p2_n0a_20","page":1,"src":"a/p2_n0a_20.webp","x":405.0,"y":209.67,"w":24.0,"h":26.67},{"id":"p2_n0a_21","page":1,"src":"a/p2_n0a_21.webp","x":424.33,"y":199.0,"w":29.0,"h":28.0},{"id":"p2_n0a_22","page":1,"src":"a/p2_n0a_22.webp","x":448.33,"y":191.0,"w":23.67,"h":26.33},{"id":"p2_n0a_23","page":1,"src":"a/p2_n0a_23.webp","x":466.0,"y":185.33,"w":19.67,"h":22.33},{"id":"p2_n0a_24","page":1,"src":"a/p2_n0a_24.webp","x":487.33,"y":178.33,"w":23.0,"h":25.67},{"id":"p2_n0b_0","page":1,"src":"a/p2_n0b_0.webp","x":254.67,"y":370.33,"w":21.0,"h":22.67},{"id":"p2_n0b_1","page":1,"src":"a/p2_n0b_1.webp","x":264.0,"y":353.33,"w":26.67,"h":27.33},{"id":"p2_n0b_2","page":1,"src":"a/p2_n0b_2.webp","x":278.67,"y":348.67,"w":19.67,"h":17.0},{"id":"p2_n0b_3","page":1,"src":"a/p2_n0b_3.webp","x":285.0,"y":335.67,"w":20.67,"h":21.0},{"id":"p2_n0b_4","page":1,"src":"a/p2_n0b_4.webp","x":299.33,"y":323.67,"w":24.0,"h":26.0},{"id":"p2_n0b_5","page":1,"src":"a/p2_n0b_5.webp","x":314.0,"y":311.33,"w":21.33,"h":24.67},{"id":"p2_n0b_6","page":1,"src":"a/p2_n0b_6.webp","x":327.33,"y":300.0,"w":21.33,"h":25.0},{"id":"p2_n0b_7","page":1,"src":"a/p2_n0b_7.webp","x":340.33,"y":289.33,"w":24.0,"h":26.33},{"id":"p2_n0c_0","page":1,"src":"a/p2_n0c_0.webp","x":293.0,"y":372.33,"w":23.67,"h":23.0},{"id":"p2_n0c_1","page":1,"src":"a/p2_n0c_1.webp","x":310.67,"y":364.33,"w":18.33,"h":19.67},{"id":"p2_n0c_2","page":1,"src":"a/p2_n0c_2.webp","x":320.33,"y":351.0,"w":21.67,"h":23.0},{"id":"p2_n0c_3","page":1,"src":"a/p2_n0c_3.webp","x":328.33,"y":339.67,"w":26.33,"h":26.67},{"id":"p2_n0c_4","page":1,"src":"a/p2_n0c_4.webp","x":344.0,"y":331.33,"w":18.67,"h":24.33},{"id":"p2_n0c_5","page":1,"src":"a/p2_n0c_5.webp","x":365.0,"y":340.33,"w":4.67,"h":4.67},{"id":"p2_url0","page":1,"src":"a/p2_url0.webp","x":36.0,"y":13.2,"w":266.8,"h":18.8},{"id":"p2_url1","page":1,"src":"a/p2_url1.webp","x":1284.8,"y":12.4,"w":261.2,"h":18.4},{"id":"p2_url2","page":1,"src":"a/p2_url2.webp","x":1562.0,"y":12.4,"w":354.0,"h":18.8},{"id":"p2_url3","page":1,"src":"a/p2_url3.webp","x":322.0,"y":13.2,"w":947.2,"h":18.8},{"id":"p2_spot","page":1,"src":"a/p2_spot.webp","x":1572.0,"y":53.5,"w":59.5,"h":59.0},{"id":"p2_bar0","page":1,"src":"a/p2_bar0.webp","x":1813.0,"y":53.5,"w":9.0,"h":59.0},{"id":"p2_bar1","page":1,"src":"a/p2_bar1.webp","x":1777.5,"y":53.5,"w":9.0,"h":59.0},{"id":"p2_bar2","page":1,"src":"a/p2_bar2.webp","x":1872.0,"y":53.5,"w":9.0,"h":59.0},{"id":"p2_bar3","page":1,"src":"a/p2_bar3.webp","x":1730.5,"y":56.5,"w":9.0,"h":52.5},{"id":"p2_bar4","page":1,"src":"a/p2_bar4.webp","x":1742.0,"y":56.5,"w":9.0,"h":52.5},{"id":"p2_bar5","page":1,"src":"a/p2_bar5.webp","x":1754.0,"y":56.5,"w":9.0,"h":52.5},{"id":"p2_bar6","page":1,"src":"a/p2_bar6.webp","x":1895.5,"y":56.5,"w":9.0,"h":52.5},{"id":"p2_bar7","page":1,"src":"a/p2_bar7.webp","x":1671.5,"y":56.5,"w":9.0,"h":52.5},{"id":"p2_bar8","page":1,"src":"a/p2_bar8.webp","x":1836.5,"y":60.0,"w":9.0,"h":46.0},{"id":"p2_bar9","page":1,"src":"a/p2_bar9.webp","x":1707.0,"y":60.0,"w":8.5,"h":46.0},{"id":"p2_bar10","page":1,"src":"a/p2_bar10.webp","x":1718.5,"y":63.5,"w":9.0,"h":39.0},{"id":"p2_bar11","page":1,"src":"a/p2_bar11.webp","x":1848.5,"y":63.5,"w":9.0,"h":39.0},{"id":"p2_bar12","page":1,"src":"a/p2_bar12.webp","x":1884.0,"y":63.5,"w":8.5,"h":39.0},{"id":"p2_bar13","page":1,"src":"a/p2_bar13.webp","x":1801.0,"y":66.5,"w":9.0,"h":33.0},{"id":"p2_bar14","page":1,"src":"a/p2_bar14.webp","x":1683.5,"y":66.5,"w":8.5,"h":33.0},{"id":"p2_bar15","page":1,"src":"a/p2_bar15.webp","x":1825.0,"y":70.0,"w":8.5,"h":26.0},{"id":"p2_bar16","page":1,"src":"a/p2_bar16.webp","x":1695.0,"y":70.0,"w":9.0,"h":26.0},{"id":"p2_bar17","page":1,"src":"a/p2_bar17.webp","x":1766.0,"y":70.0,"w":8.5,"h":26.0},{"id":"p2_bar18","page":1,"src":"a/p2_bar18.webp","x":1789.5,"y":70.0,"w":9.0,"h":26.0},{"id":"p2_bar19","page":1,"src":"a/p2_bar19.webp","x":1659.5,"y":73.5,"w":9.0,"h":19.0},{"id":"p2_bar20","page":1,"src":"a/p2_bar20.webp","x":1860.5,"y":73.5,"w":8.5,"h":19.0},{"id":"p2_bar21","page":1,"src":"a/p2_bar21.webp","x":1647.5,"y":76.5,"w":9.0,"h":13.0},{"id":"p2_bar22","page":1,"src":"a/p2_bar22.webp","x":1907.0,"y":76.5,"w":9.5,"h":13.0}];
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $=s=>document.querySelector(s);
+const stage=$('#stage'),shakeEl=$('#shake');
+function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform=`translate(${-960*s}px,${-540*s}px) scale(${s})`;}
+addEventListener('resize',fit);fit();
+
+/* ---------- build DOM ---------- */
+const E={};
+const logoBox=document.createElement('div');logoBox.id='logo';
+function mk(m,parent){
+  const im=new Image();im.src=m.src;im.className='L';im.alt='';im.draggable=false;
+  Object.assign(im.style,{left:m.x+'px',top:m.y+'px',width:m.w+'px',height:m.h+'px'});
+  im.dataset.id=m.id;E[m.id]=im;parent.appendChild(im);return im;
+}
+const p1=$('#p1'),p2=$('#p2');
+let busP1,busP2;
+for(const m of MAN){
+  if(m.id==='p1_bus'){busP1=m;continue}
+  if(m.id==='p2_bus'){busP2=m;continue}
+  if(m.page===0){
+    if(m.id==='p1_cross'){p1.appendChild(logoBox)}
+    const inLogo=/^p1_(cross|mouth|L\d)/.test(m.id);
+    mk(m,inLogo?logoBox:p1);
+  }else mk(m,p2);
+}
+// texts after the logo stay readable: move all p1 text lines above the logo
+[...p1.querySelectorAll('[data-id^="p1_t"]')].forEach(n=>p1.appendChild(n));
+
+// logo hit area
+const hit=document.createElement('button');hit.id='logoHit';hit.setAttribute('aria-label','Anfetozis: ir a la página 2');logoBox.appendChild(hit);
+
+// marionette strings (page 2)
+const NS='http://www.w3.org/2000/svg';
+const strings=document.createElementNS(NS,'svg');strings.setAttribute('class','strings');strings.setAttribute('viewBox','0 0 1920 1080');
+const pups=['p2_pup0','p2_pup1','p2_pup2'];
+const strLines={};
+pups.forEach(id=>{const m=MAN.find(x=>x.id===id);strLines[id]=[0.28,0.5,0.72].map(f=>{const l=document.createElementNS(NS,'line');l.dataset.f=f;strings.appendChild(l);return l});});
+p2.insertBefore(strings,E['p2_pup0']);
+
+// links on texts (same words, just clickable)
+function link(id,href,label){const m=MAN.find(x=>x.id===id);if(!m)return;const a=document.createElement('a');a.className='link';a.href=href;a.target='_blank';a.rel='noopener';a.setAttribute('aria-label',label);
+  Object.assign(a.style,{left:m.x+'px',top:m.y+'px',width:m.w+'px',height:m.h+'px'});(m.page?p2:p1).appendChild(a);}
+link('p1_tUrl_0','https://www.youtube.com/watch?v=bf33doAwgNU','Video en YouTube');
+link('p2_url0','https://www.instagram.com/anfetozis/','Instagram de Anfetozis');
+link('p2_url3','https://www.facebook.com/people/Anfetozis-Punk/100094310782432/?utm_source=ig&utm_medium=social&utm_content=link_in_bio','Facebook de Anfetozis');
+link('p2_url1','https://www.youtube.com/@anfetozis','Canal de YouTube de Anfetozis');
+link('p2_url2','https://www.youtube.com/watch?v=bf33doAwgNU','Video en YouTube');
+
+// back button
+const back=document.createElement('button');back.id='back';back.setAttribute('aria-label','Volver a la página 1');
+back.innerHTML='<svg viewBox="0 0 24 24"><path d="M15 3 L5 12 L15 21 L15 15 L21 16 L21 8 L15 9 Z" fill="#33ea1f" stroke="#2a0b45" stroke-width="1.6" stroke-linejoin="bevel"/></svg>';
+p2.appendChild(back);
+
+// bands for the glitch wipe
+const bands=$('#bands');for(let i=0;i<9;i++){const b=document.createElement('i');b.style.top=(i*120)+'px';b.style.height='124px';bands.appendChild(b)}
+
+/* ---------- bus: never stops ---------- */
+const busEl=$('#bus'),busImg=$('#busImg');
+function setBus(m){busImg.src=m.src;Object.assign(busEl.style,{width:m.w+'px',height:m.h+'px',top:m.y+'px',left:'0px'});}
+setBus(busP1);
+const busTrip=gsap.fromTo(busEl,{x:-busP1.w-40},{x:1960,duration:RM?40:11,ease:'none',repeat:-1});
+busTrip.progress(busP1.x/(1960+busP1.w+40)+0.02);
+if(!RM){gsap.to(busImg,{y:-3,duration:.12,repeat:-1,yoyo:true,ease:'steps(1)'});}
+
+/* ---------- helpers ---------- */
+const R=(a,b)=>a+Math.random()*(b-a);
+const rough='rough({strength:2,points:14,template:none.out,taper:out,randomize:true,clamp:false})';
+function shake(power=14,dur=.35){if(RM)return;gsap.fromTo(shakeEl,{x:0,y:0},{duration:dur,ease:'steps(8)',keyframes:[...Array(7)].map(()=>({x:R(-power,power),y:R(-power,power),rotation:R(-.6,.6),duration:dur/7})).concat([{x:0,y:0,rotation:0,duration:.05}])});}
+function flash(color,o=.85){gsap.fromTo('#flash',{opacity:o,background:color},{opacity:0,duration:.35,ease:'steps(4)'});}
+const ids=re=>MAN.filter(m=>re.test(m.id)).map(m=>E[m.id]).filter(Boolean);
+
+// glitch-in for a text line: clipped reveal in hard steps + colour split + jitter
+function glitchIn(tl,el,at,dur=.55){
+  tl.fromTo(el,{clipPath:'inset(0 100% 0 0)',x:R(-30,30),filter:'drop-shadow(6px 0 #33ea1f) drop-shadow(-6px 0 #f0524f)'},
+    {clipPath:'inset(0 0% 0 0)',x:0,duration:dur,ease:'steps(9)'},at)
+   .to(el,{filter:'drop-shadow(0px 0 rgba(0,0,0,0)) drop-shadow(0px 0 rgba(0,0,0,0))',duration:.25,ease:'steps(3)'},'>-0.05')
+   .fromTo(el,{skewX:0},{keyframes:[{skewX:-18,duration:.04},{skewX:12,duration:.04},{skewX:0,duration:.04}]},at+dur*.6);
+}
+// stamp: slams down from big, rotated
+function stamp(tl,el,at,rot=R(-14,14)){
+  tl.fromTo(el,{scale:3.2,rotation:rot,opacity:0,transformOrigin:'50% 50%'},{scale:1,rotation:0,opacity:1,duration:.22,ease:'power4.in'},at)
+    .add(()=>shake(6,.18),at+.22);
+}
+
+/* ---------- PAGE 1 ---------- */
+let idle1=[],idle2=[];
+function killIdle(list){list.forEach(t=>t.kill());list.length=0}
+function page1(){
+  killIdle(idle1);
+  const tl=gsap.timeline({defaults:{overwrite:'auto'}});
+  const all=[...p1.querySelectorAll('.L')];
+  gsap.set(all,{clearProps:'transform,opacity,clipPath,filter'});
+  if(RM){return tl}
+  // background: hard flicker on
+  tl.fromTo(E.p1_bg,{opacity:0},{opacity:1,duration:.3,ease:'steps(5)'},0);
+  // newspaper tears in from jagged clip
+  tl.fromTo(E.p1_news,{clipPath:'polygon(0 100%,10% 100%,20% 100%,35% 100%,50% 100%,65% 100%,80% 100%,100% 100%,100% 100%,0 100%)'},
+    {clipPath:'polygon(0 0,10% 4%,20% 0,35% 6%,50% 0,65% 5%,80% 0,100% 3%,100% 100%,0 100%)',duration:.6,ease:'steps(6)'},.15);
+  // buildings slam up
+  tl.fromTo(E.p1_bld,{y:700},{y:0,duration:.45,ease:'power4.in'},.3).add(()=>shake(18,.4),.75);
+  // splashes splat
+  [E.p1_splTL,E.p1_splB,E.p1_fig].forEach((el,i)=>{
+    tl.fromTo(el,{scale:0,rotation:R(-40,40),transformOrigin:'50% 50%',opacity:0},{scale:1,rotation:0,opacity:1,duration:.3,ease:'back.out(3)'},.8+i*.12);
+  });
+  tl.fromTo(E.p1_fig,{x:-25},{x:0,duration:.4,ease:'steps(5)'},1.05);
+  // the cross falls and stabs
+  tl.fromTo(E.p1_cross,{y:-1100,rotation:-35,transformOrigin:'70% 90%'},{y:0,rotation:0,duration:.42,ease:'power4.in'},1.05)
+    .to(E.p1_cross,{keyframes:[{rotation:6,duration:.05},{rotation:-4,duration:.05},{rotation:2,duration:.05},{rotation:0,duration:.05}]})
+    .add(()=>{shake(22,.4);flash('#2a0b45',.5)},1.47);
+  // the mouth bites in
+  tl.fromTo(E.p1_mouth,{scale:4,opacity:0,rotation:-12,transformOrigin:'45% 55%'},{scale:1,opacity:1,rotation:0,duration:.3,ease:'power4.in'},1.6)
+    .add(()=>{shake(26,.45);flash('#f0524f',.55)},1.9)
+    .to(E.p1_mouth,{keyframes:[{scaleY:.9,duration:.06},{scaleY:1.05,duration:.06},{scaleY:1,duration:.06}]},1.9);
+  // letters: each one dropped from a different height and angle, hits, bounces like a pogo
+  const L=ids(/^p1_L\d$/);
+  L.forEach((el,i)=>{
+    const t=2.05+i*.11+R(-.03,.05);
+    tl.fromTo(el,{y:-R(900,1300),x:R(-160,160),rotation:R(-120,120),scale:R(1.2,1.9),transformOrigin:'50% 90%'},
+      {y:0,x:0,rotation:0,scale:1,duration:.34,ease:'power4.in'},t)
+      .to(el,{keyframes:[{scaleY:.72,scaleX:1.2,duration:.05},{scaleY:1.12,scaleX:.92,duration:.07},{scaleY:1,scaleX:1,duration:.06}]},t+.34)
+      .add(()=>shake(9,.16),t+.34);
+  });
+  tl.add(()=>{shake(30,.55);flash('#33ea1f',.45)},2.05+L.length*.11+.4);
+  // texts
+  const T0=3.1;
+  ids(/^p1_tTL_/).forEach((el,i)=>glitchIn(tl,el,T0+i*.18));
+  ids(/^p1_tTR_/).forEach((el,i)=>glitchIn(tl,el,T0+.4+i*.12));
+  ids(/^p1_tR_/).forEach((el,i)=>glitchIn(tl,el,T0+.7+i*.1,.45));
+  ids(/^p1_tL_/).forEach((el,i)=>glitchIn(tl,el,T0+.5+i*.055,.4));
+  ids(/^p1_tUrl_/).forEach(el=>glitchIn(tl,el,T0+1.2,.7));
+  // the chant: each word stamped like a shout
+  ids(/^p1_tCry_/).forEach((el,i)=>stamp(tl,el,T0+1.5+i*.32,R(-18,18)));
+  tl.add(startIdle1);
+  return tl;
+}
+function startIdle1(){
+  if(RM)return;
+  const L=ids(/^p1_L\d$/);
+  // nervous punk jitter: letters twitch in hard steps, never smoothly
+  L.forEach((el,i)=>idle1.push(gsap.to(el,{keyframes:[{rotation:R(-5,5),y:R(-10,4)},{rotation:R(-4,4),y:R(-3,3)},{rotation:0,y:0}],duration:.9+R(0,.6),ease:'steps(3)',repeat:-1,repeatDelay:R(.2,1.4),delay:i*.07})));
+  idle1.push(gsap.to(E.p1_mouth,{scale:1.035,duration:.45,ease:'steps(2)',repeat:-1,yoyo:true,transformOrigin:'45% 55%'}));
+  idle1.push(gsap.to(E.p1_cross,{rotation:2.5,duration:1.1,ease:'steps(3)',repeat:-1,yoyo:true,transformOrigin:'70% 90%'}));
+  idle1.push(gsap.to(E.p1_fig,{x:6,duration:.12,ease:'steps(1)',repeat:-1,yoyo:true,repeatDelay:2.2}));
+  // every few seconds the logo kicks to say "click me"
+  idle1.push(gsap.to(logoBox,{keyframes:[{x:-10,rotation:-1.2,duration:.05},{x:9,rotation:1,duration:.05},{x:-5,duration:.05},{x:0,rotation:0,duration:.05}],repeat:-1,repeatDelay:3.2,delay:1.5,transformOrigin:'50% 50%'}));
+  // the chant keeps shouting
+  ids(/^p1_tCry_/).forEach((el,i)=>idle1.push(gsap.to(el,{keyframes:[{scale:1.18,rotation:R(-6,6),duration:.06},{scale:1,rotation:0,duration:.1}],repeat:-1,repeatDelay:4,delay:2+i*.18,transformOrigin:'100% 50%'})));
+}
+
+/* ---------- PAGE 2 ---------- */
+function syncStrings(){
+  pups.forEach(id=>{const el=E[id];if(!el)return;const r=el.getBoundingClientRect(),s=stage.getBoundingClientRect(),k=1920/s.width;
+    strLines[id].forEach((l,i)=>{const f=+l.dataset.f;const x=(r.left-s.left+r.width*f)*k,y=(r.top-s.top+r.height*(i===1?0.06:0.38))*k;
+      l.setAttribute('x1',x+R(-1,1));l.setAttribute('y1',-10);l.setAttribute('x2',x);l.setAttribute('y2',y);});});
+}
+function page2(){
+  killIdle(idle2);
+  const tl=gsap.timeline({onUpdate:syncStrings});
+  const all=[...p2.querySelectorAll('.L')];
+  gsap.set(all,{clearProps:'transform,opacity,clipPath,filter'});
+  if(RM){syncStrings();return tl}
+  tl.fromTo(E.p2_bg,{opacity:0},{opacity:1,duration:.25,ease:'steps(4)'},0);
+  // the crowd jumps up from below
+  tl.fromTo(E.p2_crowd,{y:600},{y:0,duration:.4,ease:'power4.in'},.1).add(()=>shake(18,.35),.5)
+    .to(E.p2_crowd,{keyframes:[{y:-30,duration:.08},{y:0,duration:.1},{y:-14,duration:.06},{y:0,duration:.08}]},.5);
+  // newspaper ripped open
+  tl.fromTo(E.p2_news,{clipPath:'polygon(50% 50%,50% 50%,50% 50%,50% 50%,50% 50%,50% 50%)',rotation:-4,transformOrigin:'50% 50%'},
+    {clipPath:'polygon(-10% -10%,40% -8%,110% -10%,110% 110%,60% 108%,-10% 110%)',rotation:0,duration:.55,ease:'steps(6)'},.45);
+  // puppets: pulled up from below on strings, one after another
+  pups.forEach((id,i)=>{
+    const el=E[id],t=1+i*.45;
+    tl.fromTo(el,{y:900,rotation:R(-25,25),transformOrigin:'50% 0%'},{y:-60,rotation:R(-6,6),duration:.42,ease:'power3.out'},t)
+      .to(el,{y:0,rotation:0,duration:.6,ease:'elastic.out(1.1,0.35)'},t+.42)
+      .add(()=>shake(10,.2),t+.45);
+  });
+  // names: every letter stamped in, in the order each musician appears
+  const order=[['n0a','n0b','n0c'],['n1a','n1b','n1c'],['n2a','n2b','n2c']];
+  order.forEach((g,pi)=>{
+    let t=1.35+pi*.45;
+    g.forEach(line=>{
+      ids(new RegExp('^p2_'+line+'_\\d+$')).forEach((el,i)=>{
+        tl.fromTo(el,{scale:0,rotation:R(-90,90),y:-40,opacity:0,transformOrigin:'50% 50%'},{scale:1,rotation:0,y:0,opacity:1,duration:.16,ease:'back.out(4)'},t+i*.028);
+      });
+      t+=.32;
+    });
+  });
+  // urls, spotify, equaliser
+  ['p2_url0','p2_url3','p2_url1','p2_url2'].forEach((id,i)=>E[id]&&glitchIn(tl,E[id],2.7+i*.15,.5));
+  tl.fromTo(E.p2_spot,{scale:0,rotation:-200,transformOrigin:'50% 50%'},{scale:1,rotation:0,duration:.4,ease:'back.out(2.5)'},2.8);
+  ids(/^p2_bar\d+$/).forEach((el,i)=>tl.fromTo(el,{scaleY:0,transformOrigin:'50% 50%'},{scaleY:1,duration:.12,ease:'steps(3)'},2.95+i*.025));
+  tl.fromTo(back,{scale:0,rotation:-90},{scale:1,rotation:-6,duration:.3,ease:'back.out(3)'},3.1);
+  tl.add(startIdle2);
+  return tl;
+}
+function startIdle2(){
+  if(RM)return;
+  // marionettes: swing from the top, hard and uneven
+  pups.forEach((id,i)=>{
+    const el=E[id];
+    idle2.push(gsap.to(el,{rotation:i%2?2.6:-2.6,y:-12,duration:.5+i*.08,ease:'sine.inOut',repeat:-1,yoyo:true,transformOrigin:'50% 0%',onUpdate:syncStrings,delay:i*.2}));
+    idle2.push(gsap.to(el,{keyframes:[{y:-46,duration:.09},{y:0,duration:.14}],repeat:-1,repeatDelay:2.6+i*.7,delay:1+i*.5}));
+  });
+  // the crowd pogos
+  idle2.push(gsap.to(E.p2_crowd,{y:-16,duration:.3,ease:'steps(2)',repeat:-1,yoyo:true}));
+  // equaliser
+  ids(/^p2_bar\d+$/).forEach(el=>idle2.push(gsap.to(el,{scaleY:()=>R(.25,1.6),duration:.14,ease:'steps(1)',repeat:-1,repeatRefresh:true})));
+  idle2.push(gsap.to(E.p2_spot,{rotation:360,duration:5,ease:'steps(24)',repeat:-1}));
+  // names twitch
+  ids(/^p2_n\d[abc]_\d+$/).forEach((el,i)=>idle2.push(gsap.to(el,{keyframes:[{rotation:R(-20,20),y:R(-6,0),duration:.06},{rotation:0,y:0,duration:.08}],repeat:-1,repeatDelay:R(2,6),delay:R(0,4)})));
+}
+
+/* ---------- switching ---------- */
+let cur=1,busy=false;
+function wipe(color,mid){
+  const bs=[...bands.children];
+  const tl=gsap.timeline();
+  tl.set(bs,{background:color,transformOrigin:'left'})
+    .to(bs,{scaleX:1,duration:.18,ease:'steps(3)',stagger:{each:.025,from:'random'}})
+    .add(()=>{shake(24,.4);mid()})
+    .set(bs,{transformOrigin:'right'})
+    .to(bs,{scaleX:0,duration:.18,ease:'steps(3)',stagger:{each:.025,from:'random'}},'+=.08');
+  return tl;
+}
+function go(n){
+  if(busy||n===cur)return;busy=true;
+  if(RM){show(n);busy=false;return}
+  // the logo explodes before the wipe
+  if(n===2){gsap.to(ids(/^p1_L\d$/),{y:()=>R(-500,-900),x:()=>R(-400,400),rotation:()=>R(-200,200),duration:.35,ease:'power2.in',stagger:.02});
+            gsap.to([E.p1_mouth,E.p1_cross],{scale:1.6,opacity:0,duration:.3,ease:'steps(4)'});}
+  flash(n===2?'#33ea1f':'#a838ff',.9);
+  gsap.delayedCall(.2,()=>wipe(n===2?'#33ea1f':'#a838ff',()=>{show(n);busy=false;}));
+}
+function show(n){
+  cur=n;
+  p1.hidden=n!==1;p2.hidden=n!==2;
+  p1.setAttribute('aria-hidden',n!==1);p2.setAttribute('aria-hidden',n!==2);
+  stage.style.background=n===1?'var(--purple)':'var(--toxic)';
+  // the bus keeps its place on the road; only its lane changes
+  const m=n===1?busP1:busP2;busImg.src=m.src;
+  gsap.to(busEl,{top:m.y,width:m.w,height:m.h,duration:.3,ease:'steps(3)'});
+  if(n===1){killIdle(idle2);page1()}else{killIdle(idle1);page2()}
+  (n===1?hit:back).focus({preventScroll:true});
+}
+hit.addEventListener('click',()=>go(2));
+back.addEventListener('click',()=>go(1));
+addEventListener('keydown',e=>{if(e.key==='Escape'&&cur===2)go(1)});
+hit.addEventListener('mouseenter',()=>{if(!RM&&cur===1)gsap.to(ids(/^p1_L\d$/),{y:()=>R(-24,-6),rotation:()=>R(-8,8),duration:.08,ease:'steps(1)',yoyo:true,repeat:1,stagger:.02})});
+
+page1();
+</script>
+
+</body></html>

@@ -1,23 +1,24 @@
-# ONIRIKO — Ropa urbana renovada
+# Portafolio — Santiago Rodríguez
 
-Sitio web de ONIRIKO: tienda de piezas únicas de ropa urbana reconstruida, hecha en Bogotá.
+Portafolio de ilustración y diseño visual: manchas y concept art, ilustración, animación 2D y 3D, branding (manuales de marca interactivos, páginas web e infografías animadas), posts y etiquetas, camisetas, editorial y fotografía.
 
-## Páginas
-- `index.html` — Inicio
-- `ropa.html` — Tienda con filtros, búsqueda, favoritos y bolsa de compras
-- `nosotros.html` — Sobre nosotros
-- `contacto.html` — Formulario de contacto
+## Ver el portafolio
 
-## Archivos compartidos
-- `oniriko.css` — estilos de todo el sitio
-- `oniriko.js` — catálogo de productos, bolsa, favoritos y animaciones
-- `img/` — fotos y logos
+Abre `index.html` en el navegador. Todas las imágenes y videos están dentro del archivo, así que funciona sin servidor.
 
-## Configuración
-Al inicio de `oniriko.js`:
-- `WHATSAPP` — número para recibir pedidos (ej. `573001234567`)
-- `CORREO` — correo para el formulario de contacto (FormSubmit)
-- `PRODUCTS` — nombres, precios, tallas e imágenes de cada pieza
+Para publicarlo como página web con GitHub Pages: **Settings → Pages → Source: Deploy from a branch → `main` / root**.
 
-## Ver en línea
-Activa GitHub Pages en **Settings → Pages → Branch: main / root**.
+## Estructura
+
+- `index.html` — el portafolio completo (un solo archivo).
+- `proyectos/oniriko.html` — manual de marca interactivo de Oniriko.
+- `proyectos/ca7riel.html` — infografía animada de Ca7riel & Paco Amoroso.
+- `proyectos/anfetozis/` — infografía motion graphics de Anfetozis.
+- `proyectos/oniriko-web/` — sitio web de la tienda ONIRIKO (index, ropa, nosotros, contacto).
+
+## Contacto
+
+- santorodriguez19a04@gmail.com
+- 320 922 0247
+- Instagram: [@santo_rodriguez2](https://www.instagram.com/santo_rodriguez2/)
+- [Behance](https://www.behance.net/santorodriguez2)
